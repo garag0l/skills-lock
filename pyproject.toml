@@ -1,0 +1,63 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "skills-lock"
+dynamic = ["version"]
+description = "Lockfile and tamper/drift detector for installed AI agent skills (Claude Code / Codex)."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Murat Bekgi" }]
+keywords = [
+    "skills",
+    "lockfile",
+    "integrity",
+    "tamper-detection",
+    "supply-chain",
+    "claude",
+    "agent",
+    "security",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Security",
+    "Topic :: Software Development :: Quality Assurance",
+    "Topic :: Utilities",
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest", "ruff"]
+
+[project.scripts]
+skills-lock = "skills_lock.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/garag0l/skills-lock"
+Repository = "https://github.com/garag0l/skills-lock"
+Changelog = "https://github.com/garag0l/skills-lock/blob/main/CHANGELOG.md"
+
+[tool.hatch.version]
+path = "src/skills_lock/__init__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/skills_lock"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B"]
